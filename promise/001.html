@@ -1,0 +1,38 @@
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Learn Promise</title>
+</head>
+hello world
+<script>
+    const myPromise = (param) => new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if(param.startsWith("error")){
+                reject(param)
+            }else{
+                resolve(param);
+            }
+        }, 300);
+    });
+
+
+    (async () => {
+        let result = await Promise.all([myPromise('hello world'), myPromise('test')]);
+        console.log('result ', result);
+
+        console.log('------------ error ------------');
+        try{
+            result = await Promise.all([myPromise('hello world'), myPromise('error')]);
+            console.log('result2 ', result);
+        }catch(e){
+            console.log('error :', e);
+        }
+
+
+    })();
+
+
+</script>
+
+</html>
