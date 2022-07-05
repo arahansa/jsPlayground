@@ -1,0 +1,43 @@
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Learn Promise</title>
+</head>
+hello world?
+<script>
+    const myPromise = (param) => new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if(param.startsWith("error")){
+                reject(param)
+            }else{
+                resolve(param);
+            }
+        }, 300);
+    });
+
+    const recursiveCall = (index) => {
+        return new Promise(async (resolve, reject) => {
+            console.log(index);
+            if(index == 2){
+               return  reject(index);
+            }
+            if (index < 10) {
+                try{
+                    const result = await recursiveCall(++index)
+                    console.log('result ', result);
+                }catch(e){
+                    console.log('error : ', e);
+                    return resolve(e);
+                }
+            } else {
+                return resolve()
+            }
+        })
+    }
+
+    recursiveCall(0).then(() => console.log('done'));
+
+</script>
+
+</html>

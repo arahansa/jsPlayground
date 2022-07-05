@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<body>
+
+<!-- load the d3.js library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.6.1/d3.min.js"></script>
+
+<script>
+
+    var holder = d3.select("body") // select the 'body' element
+        .append("svg")           // append an SVG element to the body
+        .attr("width", 449)      // make the SVG element 449 pixels wide
+        .attr("height", 249);    // make the SVG element 249 pixels high
+
+    // draw a path
+    holder.append("path")          // attach a path
+        .style("stroke", "black")  // colour the line
+        .style("fill", "none")     // remove any fill colour
+        .attr("d", "M 100,50, L 200,150, L 300,50 Z");  // path commands
+
+</script>
+
+</body>
